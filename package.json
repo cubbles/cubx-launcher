@@ -1,9 +1,9 @@
 {
-  "name": "@cubbles/vanilla-boilerplate",
-  "version": "0.1.2",
-  "description": "A template for a cubbles webpackage.",
-  "private": true,
-  "main": "\"\"",
+  "name": "@cubbles/cubx-launcher",
+  "version": "0.1.0",
+  "description": "A webapp launcher",
+  "private": false,
+  "main": "",
   "scripts": {
     "build": "npm-run-all --serial clean \"_webpack -- -d --config src/webpack.config.js\"",
     "build:watch": "npm-run-all --serial \"_webpack -- -d --config src/webpack.config.js --watch\"",
@@ -31,8 +31,8 @@
       "start:watch": "Open the browser your your locally built webpackage and reload on changes."
     }
   },
-  "author": "boehlau@getrequest.de",
-  "license": "ISC",
+  "author": "wagner@getrequest.de",
+  "license": "MIT",
   "devDependencies": {
     "@cubbles/webpackage-document-api": "^0.1.2",
     "@cubbles/webpackage-uploader": "^0.1.2",
@@ -66,17 +66,16 @@
     "webpack-cli": "^3.0.3",
     "yo": "^2.0.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cubbles/coder-toolset.git"
-  },
+  "repository": "git+https://github.com/cubbles/cubx-launcher.git",
   "keywords": [
-    "new"
+    "launcher",
+    "cubx-launcher",
+    "cubbles"
   ],
   "bugs": {
-    "url": "https://github.com/cubbles/coder-toolset/issues"
+    "url": "https://github.com/cubbles/cubx-launcher/issues"
   },
-  "homepage": "https://github.com/cubbles/coder-toolset/#readme",
+  "homepage": "https://github.com/cubbles/cubx-launcher/#readme",
   "publishConfig": {
     "access": "public"
   },
