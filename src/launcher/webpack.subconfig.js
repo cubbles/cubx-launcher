@@ -1,5 +1,6 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const wpkgUtils = require('@cubbles/wpkg-utils');
 const webpackageName = wpkgUtils.getWebpackageName;
@@ -10,19 +11,24 @@ const config = {
     // make this configuration independent from the current working directory
     context: path.resolve(__dirname),
     // define the entry module for the bundle to be created
-    entry: `./c-util.js`,
+    entry: `./launcher.ts`,
     output: {
         path: distFolder,
-        filename: `c-util.bundle.js`
+        filename: `launcher.bundle.js`
     },
     module: {
         rules: [
             {
-                // manage placeholdes in js files
-                test: /\.js$/,
+                // manage placeholdes in ts files
+                test: /\.ts$/,
                 use: [
                     { loader: `preprocess-loader?elementName=${elementName}` }
                 ]
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
             },
             {
                 test: /\.sss$/,
@@ -48,10 +54,22 @@ const config = {
             }
         ]
     },
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js', '.sss']
+    },
     plugins: [
         new CopyWebpackPlugin([
             { from: '**/*.md', to: distFolder}
         ], {}),
+        new HtmlWebpackPlugin({
+            template: 'SHOWROOM.html',
+            filename: 'SHOWROOM.html',
+                // manage placeholders
+            templateParameters: {
+                // webpackageName: `${webpackageName}`,
+                elementName: `${elementName}`
+              }
+          }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             reportFilename: 'bundleReport.html',
