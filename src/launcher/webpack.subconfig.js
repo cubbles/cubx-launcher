@@ -11,7 +11,7 @@ const config = {
     // make this configuration independent from the current working directory
     context: path.resolve(__dirname),
     // define the entry module for the bundle to be created
-    entry: `./launcher.ts`,
+    entry: `./launcher.js`,
     output: {
         path: distFolder,
         filename: `launcher.bundle.js`
@@ -19,16 +19,11 @@ const config = {
     module: {
         rules: [
             {
-                // manage placeholdes in ts files
-                test: /\.ts$/,
+                // manage placeholdes in js files
+                test: /\.js$/,
                 use: [
-                    { loader: `preprocess-loader?elementName=${elementName}` }
+                    { loader: `preprocess-loader?elementName=${elementName}&webpackageName=${webpackageName}` }
                 ]
-            },
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
             },
             {
                 test: /\.sss$/,
@@ -51,11 +46,14 @@ const config = {
                         loader: 'postcss-loader'
                     }
                 ]
-            }
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+                use: [
+                    'file-loader'
+                    ]
+                }
         ]
-    },
-    resolve: {
-        extensions: [ '.tsx', '.ts', '.js', '.sss']
     },
     plugins: [
         new CopyWebpackPlugin([
@@ -66,7 +64,7 @@ const config = {
             filename: 'SHOWROOM.html',
                 // manage placeholders
             templateParameters: {
-                // webpackageName: `${webpackageName}`,
+                webpackageName: `${webpackageName}`,
                 elementName: `${elementName}`
               }
           }),

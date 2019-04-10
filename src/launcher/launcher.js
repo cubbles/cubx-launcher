@@ -1,15 +1,16 @@
 // import all resources here
-import css from './c-util.sss';
+import css from './launcher.sss';
 
 class Launcher {
     constructor () {
         this.drawLauncherIcon();
     }
 
-    private drawLauncherIcon () {
+    drawLauncherIcon () {
         // append launcher to dom using absolute positioning
         const launcherIcon = document.createElement('div');
-        launcherIcon.innerHTML = '<p>Show launcher</p>';
+        launcherIcon.classList.add('/* @echo webpackageName */_cubx-launcher-root');
+        launcherIcon.innerHTML = '<i class="/* @echo webpackageName */_material-icons">chevron_left</i>';
         launcherIcon.addEventListener('click', () => { alert('hello!'); });
 
         document.body.appendChild(launcherIcon);
