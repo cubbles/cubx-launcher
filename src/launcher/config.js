@@ -1,34 +1,16 @@
+import * as axios from 'axios';
+
 class Config {
-  getConfig () {
-    return {
-      launcherIcon: {
-        collapsed: 'apps',
-        expanded: 'keyboard_arrow_right'
-      },
-      apps: [
-        {
-          icon: 'playlist_add'
-        },
-        {
-          icon: 'speaker_phone'
-        },
-        {
-          icon: 'location_on'
-        },
-        {
-          icon: 'forum'
-        },
-        {
-          icon: 'message'
-        },
-        {
-          icon: 'ring_volume'
-        },
-        {
-          icon: 'ev_station'
-        }
-      ]
-    };
+  constructor () {
+    this.configUrl = document.currentScript.getAttribute('data-launcher-config') || 'config.json';
+  }
+
+  async get () {
+    const config = await axios.get(this.configUrl, {
+      responseType: 'json'
+    });
+
+    return config.data;
   }
 }
 

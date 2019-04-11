@@ -31,7 +31,7 @@
       "start:watch": "Open the browser your your locally built webpackage and reload on changes."
     }
   },
-  "author": "wagner@getrequest.de",
+  "author": "Philipp Wagner <wagner@getrequest.de>",
   "license": "MIT",
   "devDependencies": {
     "@cubbles/webpackage-document-api": "^0.1.2",

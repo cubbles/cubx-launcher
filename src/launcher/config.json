@@ -1,0 +1,35 @@
+{
+    "launcherIcon": {
+      "collapsed": "apps",
+      "expanded": "keyboard_arrow_right"
+    },
+    "apps": [
+      {
+        "icon": "playlist_add",
+        "type": "web",
+        "url": "https://de.wikipedia.org/wiki/N3_Engine_Overhaul_Services"
+      },
+      {
+        "icon": "speaker_phone",
+        "type": "web",
+        "url": "https://www.getrequest.de"
+      },
+      {
+        "icon": "location_on",
+        "type": "web",
+        "url": "https://www.n3eos.com/"
+      },
+      {
+        "icon": "forum"
+      },
+      {
+        "icon": "message"
+      },
+      {
+        "icon": "ring_volume"
+      },
+      {
+        "icon": "ev_station"
+      }
+    ]
+  }

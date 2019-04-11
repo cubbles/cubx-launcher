@@ -1,8 +1,8 @@
 {
     "target": {
-        "url": "http://cubbles.world/sandbox",
+        "url": "https://cubbles.world/sandbox",
         "proxy": ""
     },
     "debug": false,
-    "dryRun": true
+    "dryRun": false
 }
