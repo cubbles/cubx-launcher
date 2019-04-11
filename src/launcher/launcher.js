@@ -1,7 +1,3 @@
-// import all resources here
-import css from './launcher.sss'; // eslint-disable-line no-unused-vars
-import Config from './config';
-
 class Launcher {
   constructor (config) {
     this.config = config;
@@ -103,6 +99,8 @@ class Launcher {
     frame.src = config.url;
     frame.width = '100%';
     frame.height = '100%';
+    frame.marginHeight = 0;
+    frame.marginWidth = 0;
     parent.appendChild(frame);
   }
 
@@ -112,9 +110,4 @@ class Launcher {
   }
 }
 
-const config = new Config();
-config
-  .get()
-  .then(value => {
-    const launcher = new Launcher(value); // eslint-disable-line no-unused-vars
-  });
+export default Launcher;

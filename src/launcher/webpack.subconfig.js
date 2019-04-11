@@ -6,12 +6,13 @@ const wpkgUtils = require('@cubbles/wpkg-utils');
 const webpackageName = wpkgUtils.getWebpackageName;
 const elementName = webpackageName + '-' + __dirname.split(path.sep).pop();
 const distFolder = path.resolve(__dirname, global.cubx.distFolderWebpackage, elementName);
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   // make this configuration independent from the current working directory
   context: path.resolve(__dirname),
   // define the entry module for the bundle to be created
-  entry: './launcher.js',
+  entry: './main.js',
   output: {
     path: distFolder,
     filename: 'launcher.bundle.js'
@@ -50,7 +51,12 @@ const config = {
       {
         test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
         use: [
-          'file-loader'
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }
+          }
         ]
       }
     ]

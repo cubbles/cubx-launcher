@@ -5,7 +5,12 @@ module.exports = (webpackageName) => {
   return {
     description: 'WebApp Launcher',
     resources: [
-      'launcher.bundle.js'
+      'launcher.bundle.js',
+      'MaterialIcons-Regular.eot',
+      'MaterialIcons-Regular.svg',
+      'MaterialIcons-Regular.ttf',
+      'MaterialIcons-Regular.woff',
+      'MaterialIcons-Regular.woff2'
     ]
   };
 };

@@ -3,18 +3,18 @@
     By default, webpack expects to find SugarSS ("Indent-based CSS syntax for PostCSS.")
     @see https://github.com/postcss/sugarss
 */
-@font-face 
+/* @font-face 
   font-family: 'Material Icons'
   font-style: normal
   font-weight: 400
-  src: url('material-design-icons/iconfont/MaterialIcons-Regular.eot') /* For IE6-8 */
+  src: url('material-design-icons/iconfont/MaterialIcons-Regular.eot')
   src: local('Material Icons'),
     local('MaterialIcons-Regular'),
-    url('material-design-icons/iconfont/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('material-design-icons/iconfont/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'),
     url('material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
     url('material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff'),
     url('material-design-icons/iconfont/MaterialIcons-Regular.ttf') format('truetype'),
-    url('material-design-icons/iconfont/MaterialIcons-Regular.svg#Inconsolata') format('svg') /* Legacy iOS */
+    url('material-design-icons/iconfont/MaterialIcons-Regular.svg#Inconsolata') format('svg') */
 
 .material-icons
   font-family: 'Material Icons'
@@ -113,9 +113,16 @@
   width: 80%
   /* border: 1px solid white */
   height: 80%
+  display: flex
+  flex-direction: column
+
+.cubx-launcher-modal-content [data-content-anchor]
+  flex: 1
 
 .cubx-launcher-modal-close
   color: white
   font-size: 60px
-  float: right
   cursor: pointer
+
+.cubx-launcher-modal-close i
+  float: right
