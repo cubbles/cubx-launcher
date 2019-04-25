@@ -6,7 +6,7 @@ const wpkgUtils = require('@cubbles/wpkg-utils');
 const webpackageName = wpkgUtils.getWebpackageName;
 const elementName = webpackageName + '-' + __dirname.split(path.sep).pop();
 const distFolder = path.resolve(__dirname, global.cubx.distFolderWebpackage, elementName);
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   // make this configuration independent from the current working directory
@@ -30,11 +30,14 @@ const config = {
         test: /\.sss$/,
         use: [
           {
-            loader: 'style-loader',
-            options: {
-              hmr: false
-            }
+            loader: MiniCssExtractPlugin.loader
           },
+          // {
+          //   loader: 'style-loader',
+          //   options: {
+          //     hmr: false
+          //   }
+          // },
           {
             loader: 'css-loader',
             options: {
@@ -62,6 +65,9 @@ const config = {
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'launcher_[name].css'
+    }),
     new CopyWebpackPlugin([
       { from: '**/*.md', to: distFolder },
       { from: 'config.json', to: distFolder }

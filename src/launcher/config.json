@@ -3,6 +3,7 @@
       "collapsed": "apps",
       "expanded": "keyboard_arrow_right"
     },
+    "externalStyle": "",
     "apps": [
       {
         "icon": "playlist_add",
@@ -17,19 +18,7 @@
       {
         "icon": "location_on",
         "type": "web",
-        "url": "https://www.n3eos.com/"
-      },
-      {
-        "icon": "forum"
-      },
-      {
-        "icon": "message"
-      },
-      {
-        "icon": "ring_volume"
-      },
-      {
-        "icon": "ev_station"
+        "url": "https://www.weimar.de"
       }
     ]
   }

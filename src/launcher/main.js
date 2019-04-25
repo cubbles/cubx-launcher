@@ -7,8 +7,8 @@ import Launcher from './launcher';
 const config = new Config();
 config
   .get()
-  .then(value => {
-    const launcher = new Launcher(value); // eslint-disable-line no-unused-vars
-    const styleLoader = new StyleLoader('https://fonts.googleapis.com/icon?family=Material+Icons');
+  .then(() => {
+    const launcher = new Launcher(config.getData()); // eslint-disable-line no-unused-vars
+    const styleLoader = new StyleLoader(launcher.getExternalStyleUrl(config.getLauncherSrc()));
     styleLoader.process();
   });

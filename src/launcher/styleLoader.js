@@ -10,7 +10,7 @@ class StyleLoader {
     style.type = 'text/css';
     style.rel = 'stylesheet';
 
-    parent.prepend(style);
+    parent.append(style);
   }
 }
 

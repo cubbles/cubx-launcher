@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 class Launcher {
   constructor (config) {
     this.config = config;
@@ -107,6 +109,17 @@ class Launcher {
   clearContent () {
     const parent = this.launcherModal.querySelector('[data-content-anchor]');
     parent.innerHTML = '';
+  }
+
+  getExternalStyleUrl (url) {
+    if (this.config.hasOwnProperty('externalStyle') && typeof this.config.getExternalStyle === 'string') {
+      return this.config.externalStyle;
+    } else {
+      let pathname = url.pathname;
+      pathname = pathname.substring(0, pathname.lastIndexOf('/'));
+      url.pathname = `${pathname}/launcher_main.css`;
+      return url.toString();
+    }
   }
 }
 
