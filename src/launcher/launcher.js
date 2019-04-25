@@ -112,7 +112,7 @@ class Launcher {
   }
 
   getExternalStyleUrl (url) {
-    if (this.config.hasOwnProperty('externalStyle') && typeof this.config.getExternalStyle === 'string') {
+    if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string') {
       return this.config.externalStyle;
     } else {
       let pathname = url.pathname;
