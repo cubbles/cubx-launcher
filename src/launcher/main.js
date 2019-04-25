@@ -9,6 +9,11 @@ config
   .get()
   .then(() => {
     const launcher = new Launcher(config.getData()); // eslint-disable-line no-unused-vars
-    const styleLoader = new StyleLoader(launcher.getExternalStyleUrl(config.getLauncherSrc()));
-    styleLoader.process();
+    const defaultStyleLoader = new StyleLoader(launcher.getDefaultStyleUrl(config.getLauncherSrc()));
+    defaultStyleLoader.process();
+
+    if (launcher.getExternalStyleUrl()) {
+      const externalStyleLoader = new StyleLoader(launcher.getExternalStyleUrl());
+      externalStyleLoader.process();
+    }
   });

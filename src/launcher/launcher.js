@@ -111,15 +111,19 @@ class Launcher {
     parent.innerHTML = '';
   }
 
-  getExternalStyleUrl (url) {
+  getExternalStyleUrl () {
     if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string') {
       return this.config.externalStyle;
     } else {
-      let pathname = url.pathname;
-      pathname = pathname.substring(0, pathname.lastIndexOf('/'));
-      url.pathname = `${pathname}/launcher_main.css`;
-      return url.toString();
+      return undefined;
     }
+  }
+
+  getDefaultStyleUrl (url) {
+    let pathname = url.pathname;
+    pathname = pathname.substring(0, pathname.lastIndexOf('/'));
+    url.pathname = `${pathname}/launcher_main.css`;
+    return url.toString();
   }
 }
 
