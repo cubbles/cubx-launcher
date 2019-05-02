@@ -22,7 +22,7 @@ class Launcher {
 
   drawLauncherMenu () {
     const launcherMenu = document.createElement('div');
-    launcherMenu.style.visibility = 'hidden';
+    launcherMenu.classList.add('/* @echo webpackageName */_hidden');
     launcherMenu.classList.add('/* @echo webpackageName */_cubx-launcher-menu');
 
     let markup = '<ul>';
@@ -47,7 +47,7 @@ class Launcher {
   drawModalPopup () {
     const launcherModal = document.createElement('div');
     launcherModal.classList.add('/* @echo webpackageName */_cubx-launcher-modal');
-    launcherModal.style.visibility = 'hidden';
+    launcherModal.classList.add('/* @echo webpackageName */_hidden');
 
     launcherModal.innerHTML = `<div class="/* @echo webpackageName */_cubx-launcher-modal-content">
         <span data-close class="/* @echo webpackageName */_cubx-launcher-modal-close"><i class="/* @echo webpackageName */_material-icons">close</i></span>
@@ -62,13 +62,13 @@ class Launcher {
 
   showModal (config) {
     console.log(config);
-    this.launcherModal.style.visibility = 'visible';
+    this.launcherModal.classList.remove('/* @echo webpackageName */_hidden');
     this.toggleMenu();
     this.injectContent(config);
   }
 
   closeModal () {
-    this.launcherModal.style.visibility = 'hidden';
+    this.launcherModal.classList.add('/* @echo webpackageName */_hidden');
     // cleare content
     this.clearContent();
   }
@@ -78,11 +78,11 @@ class Launcher {
     switch (elem.innerText) {
       case this.config.launcherIcon.collapsed:
         elem.innerText = this.config.launcherIcon.expanded;
-        this.launcherMenu.style.visibility = 'visible';
+        this.launcherMenu.classList.remove('/* @echo webpackageName */_hidden');
         break;
       case this.config.launcherIcon.expanded:
         elem.innerText = this.config.launcherIcon.collapsed;
-        this.launcherMenu.style.visibility = 'hidden';
+        this.launcherMenu.classList.add('/* @echo webpackageName */_hidden');
         break;
     }
   }
