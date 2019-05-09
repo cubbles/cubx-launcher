@@ -9,15 +9,18 @@ class Launcher {
   }
 
   drawLauncherIcon () {
-    const launcherIcon = document.createElement('div');
-    launcherIcon.classList.add('/* @echo webpackageName */_cubx-launcher-root');
-    launcherIcon.innerHTML = `<i class="/* @echo webpackageName */_material-icons">${this.config.launcherIcon.collapsed}</i>`;
+    const launcherTouchPoint = document.createElement('div');
 
-    launcherIcon.addEventListener('click', () => { this.toggleMenu(); });
-    // launcherIcon.addEventListener('mouseover  ', () => { this.toggleMenu(); });
+    launcherTouchPoint.classList.add('/* @echo webpackageName */_cubx-launcher-root');
+    launcherTouchPoint.classList.add('collapsed');
 
-    document.body.appendChild(launcherIcon);
-    this.launcherIcon = launcherIcon;
+    launcherTouchPoint.innerHTML = `<i data-action="open" class="/* @echo webpackageName */_material-icons /*">${this.config.launcherIcon.collapsed}</i>`;
+    launcherTouchPoint.innerHTML += `<i data-action="close" class="/* @echo webpackageName */_material-icons /* @echo webpackageName */_hidden">${this.config.launcherIcon.expanded}</i>`;
+
+    launcherTouchPoint.addEventListener('click', () => { this.toggleMenu(); });
+
+    document.body.appendChild(launcherTouchPoint);
+    this.launcherTouchPoint = launcherTouchPoint;
   }
 
   drawLauncherMenu () {
@@ -74,16 +77,21 @@ class Launcher {
   }
 
   toggleMenu () {
-    const elem = this.launcherIcon.querySelector('i');
-    switch (elem.innerText) {
-      case this.config.launcherIcon.collapsed:
-        elem.innerText = this.config.launcherIcon.expanded;
-        this.launcherMenu.classList.remove('/* @echo webpackageName */_hidden');
-        break;
-      case this.config.launcherIcon.expanded:
-        elem.innerText = this.config.launcherIcon.collapsed;
-        this.launcherMenu.classList.add('/* @echo webpackageName */_hidden');
-        break;
+    const openIcon = this.launcherTouchPoint.querySelector('i[data-action="open"]');
+    const closeIcon = this.launcherTouchPoint.querySelector('i[data-action="close"]');
+
+    if (this.launcherTouchPoint.classList.contains('collapsed')) {
+      openIcon.classList.add('/* @echo webpackageName */_hidden');
+      closeIcon.classList.remove('/* @echo webpackageName */_hidden');
+      this.launcherMenu.classList.remove('/* @echo webpackageName */_hidden');
+      this.launcherTouchPoint.classList.remove('collapsed');
+      this.launcherTouchPoint.classList.add('expanded');
+    } else if (this.launcherTouchPoint.classList.contains('expanded')) {
+      openIcon.classList.remove('/* @echo webpackageName */_hidden');
+      closeIcon.classList.add('/* @echo webpackageName */_hidden');
+      this.launcherMenu.classList.add('/* @echo webpackageName */_hidden');
+      this.launcherTouchPoint.classList.add('collapsed');
+      this.launcherTouchPoint.classList.remove('expanded');
     }
   }
 
