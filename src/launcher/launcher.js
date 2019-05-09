@@ -3,6 +3,13 @@
 class Launcher {
   constructor (config) {
     this.config = config;
+
+    this.hiddenClasses = {
+      'materialIcons': '/* @echo webpackageName */_material-icons_hidden',
+      'modal': '/* @echo webpackageName */_launcher-modal_hidden',
+      'menu': '/* @echo webpackageName */_launcher-menu_hidden'
+    };
+
     this.drawLauncherIcon();
     this.drawLauncherMenu();
     this.drawModalPopup();
@@ -15,7 +22,7 @@ class Launcher {
     launcherTouchPoint.classList.add('collapsed');
 
     launcherTouchPoint.innerHTML = `<i data-action="open" class="/* @echo webpackageName */_material-icons /*">${this.config.launcherIcon.collapsed}</i>`;
-    launcherTouchPoint.innerHTML += `<i data-action="close" class="/* @echo webpackageName */_material-icons /* @echo webpackageName */_hidden">${this.config.launcherIcon.expanded}</i>`;
+    launcherTouchPoint.innerHTML += `<i data-action="close" class="/* @echo webpackageName */_material-icons ${this.hiddenClasses.materialIcons}">${this.config.launcherIcon.expanded}</i>`;
 
     launcherTouchPoint.addEventListener('click', () => { this.toggleMenu(); });
 
@@ -25,7 +32,7 @@ class Launcher {
 
   drawLauncherMenu () {
     const launcherMenu = document.createElement('div');
-    launcherMenu.classList.add('/* @echo webpackageName */_hidden');
+    launcherMenu.classList.add(this.hiddenClasses.menu);
     launcherMenu.classList.add('/* @echo webpackageName */_cubx-launcher-menu');
 
     let markup = '<ul>';
@@ -50,7 +57,7 @@ class Launcher {
   drawModalPopup () {
     const launcherModal = document.createElement('div');
     launcherModal.classList.add('/* @echo webpackageName */_cubx-launcher-modal');
-    launcherModal.classList.add('/* @echo webpackageName */_hidden');
+    launcherModal.classList.add(this.hiddenClasses.modal);
 
     launcherModal.innerHTML = `<div class="/* @echo webpackageName */_cubx-launcher-modal-content">
         <span data-close class="/* @echo webpackageName */_cubx-launcher-modal-close"><i class="/* @echo webpackageName */_material-icons">close</i></span>
@@ -65,13 +72,13 @@ class Launcher {
 
   showModal (config) {
     console.log(config);
-    this.launcherModal.classList.remove('/* @echo webpackageName */_hidden');
+    this.launcherModal.classList.remove(this.hiddenClasses.modal);
     this.toggleMenu();
     this.injectContent(config);
   }
 
   closeModal () {
-    this.launcherModal.classList.add('/* @echo webpackageName */_hidden');
+    this.launcherModal.classList.add(this.hiddenClasses.modal);
     // cleare content
     this.clearContent();
   }
@@ -81,15 +88,15 @@ class Launcher {
     const closeIcon = this.launcherTouchPoint.querySelector('i[data-action="close"]');
 
     if (this.launcherTouchPoint.classList.contains('collapsed')) {
-      openIcon.classList.add('/* @echo webpackageName */_hidden');
-      closeIcon.classList.remove('/* @echo webpackageName */_hidden');
-      this.launcherMenu.classList.remove('/* @echo webpackageName */_hidden');
+      openIcon.classList.add(this.hiddenClasses.materialIcons);
+      closeIcon.classList.remove(this.hiddenClasses.materialIcons);
+      this.launcherMenu.classList.remove(this.hiddenClasses.menu);
       this.launcherTouchPoint.classList.remove('collapsed');
       this.launcherTouchPoint.classList.add('expanded');
     } else if (this.launcherTouchPoint.classList.contains('expanded')) {
-      openIcon.classList.remove('/* @echo webpackageName */_hidden');
-      closeIcon.classList.add('/* @echo webpackageName */_hidden');
-      this.launcherMenu.classList.add('/* @echo webpackageName */_hidden');
+      openIcon.classList.remove(this.hiddenClasses.materialIcons);
+      closeIcon.classList.add(this.hiddenClasses.materialIcons);
+      this.launcherMenu.classList.add(this.hiddenClasses.menu);
       this.launcherTouchPoint.classList.add('collapsed');
       this.launcherTouchPoint.classList.remove('expanded');
     }
@@ -119,9 +126,14 @@ class Launcher {
     parent.innerHTML = '';
   }
 
-  getExternalStyleUrl () {
-    if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string') {
-      return this.config.externalStyle;
+  getExternalStyleUrl (url) {
+    if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string' && url) {
+      let pathname = url.pathname.split('/');
+      pathname.pop();
+      pathname.push(this.config.externalStyle);
+      url.pathname = pathname.join('/');
+
+      return url.toString();
     } else {
       return undefined;
     }

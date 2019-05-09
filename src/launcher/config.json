@@ -3,6 +3,7 @@
       "collapsed": "apps",
       "expanded": "keyboard_arrow_right"
     },
+    "externalStyle": "test.css",
     "apps": [
       {
         "icon": "playlist_add",
