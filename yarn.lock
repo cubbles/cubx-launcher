@@ -19,10 +19,22 @@
     url-join "^0.0.1"
     yargs "^3.15.0"
 
-"@cubbles/webpackage-document-api@^0.1.2", "@cubbles/webpackage-document-api@^0.1.3":
+"@cubbles/webpackage-document-api@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@cubbles/webpackage-document-api/-/webpackage-document-api-0.1.2.tgz#5b13acd2330371f48c805b960c5352cd0e9235d0"
   integrity sha512-Ra9pikAKSfE30+kAbRZ1TCXI18+BcD3iSXYDERlpEZrc7Ria7hcMqRyQX4SWZU+yHmIqmLnd0r7BaDKqpl6kLw==
+  dependencies:
+    eslint "^2.4.0"
+    eslint-config-standard "^5.1.0"
+    eslint-plugin-standard "^1.3.2"
+    inquirer "^6.2.2"
+    lodash "^4.15.0"
+    tv4 "^1.1.12"
+
+"@cubbles/webpackage-document-api@^0.1.3":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@cubbles/webpackage-document-api/-/webpackage-document-api-0.1.4.tgz#d913855249893cc5ba0aab7b72ee8c362f242ac3"
+  integrity sha512-IN+56Ji0f8f3Tq7dJGbeU8lr1s+CcOEf9K6ikYr/xp2v4DL0KHcEgkRLi15s9KkyDImz3FgUW9ztF4VYTFI81w==
   dependencies:
     eslint "^2.4.0"
     eslint-config-standard "^5.1.0"
