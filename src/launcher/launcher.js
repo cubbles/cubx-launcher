@@ -21,7 +21,7 @@ class Launcher {
     launcherTouchPoint.classList.add('/* @echo webpackageName */_cubx-launcher-root');
     launcherTouchPoint.classList.add('collapsed');
 
-    launcherTouchPoint.innerHTML = `<i data-action="open" class="/* @echo webpackageName */_material-icons /*">${this.config.launcherIcon.collapsed}</i>`;
+    launcherTouchPoint.innerHTML = `<i data-action="open" class="/* @echo webpackageName */_material-icons">${this.config.launcherIcon.collapsed}</i>`;
     launcherTouchPoint.innerHTML += `<i data-action="close" class="/* @echo webpackageName */_material-icons ${this.hiddenClasses.materialIcons}">${this.config.launcherIcon.expanded}</i>`;
 
     launcherTouchPoint.addEventListener('click', () => { this.toggleMenu(); });
@@ -126,14 +126,21 @@ class Launcher {
     parent.innerHTML = '';
   }
 
-  getExternalStyleUrl (url) {
-    if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string' && url) {
-      let pathname = url.pathname.split('/');
-      pathname.pop();
-      pathname.push(this.config.externalStyle);
-      url.pathname = pathname.join('/');
+  // getExternalStyleUrl (url) {
+  //   if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string' && url) {
+  //     let pathname = url.pathname.split('/');
+  //     pathname.pop();
+  //     pathname.push(this.config.externalStyle);
+  //     url.pathname = pathname.join('/');
 
-      return url.toString();
+  //     return url.toString();
+  //   } else {
+  //     return undefined;
+  //   }
+  // }
+  getExternalStyleUrl () {
+    if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string') {
+      return this.config.externalStyle;
     } else {
       return undefined;
     }
