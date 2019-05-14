@@ -1,24 +1,24 @@
 {
-    "launcherIcon": {
-      "collapsed": "apps",
-      "expanded": "keyboard_arrow_right"
+  "launcherIcon": {
+    "collapsed": "apps",
+    "expanded": "keyboard_arrow_right"
+  },
+  "externalStyle": "test.css",
+  "apps": [
+    {
+      "icon": "playlist_add",
+      "type": "web",
+      "url": "https://de.wikipedia.org/wiki/N3_Engine_Overhaul_Services"
     },
-    "externalStyle": "test.css",
-    "apps": [
-      {
-        "icon": "playlist_add",
-        "type": "web",
-        "url": "https://de.wikipedia.org/wiki/N3_Engine_Overhaul_Services"
-      },
-      {
-        "icon": "add",
-        "type": "web",
-        "url": "https://www.weimar.de"
-      },
-      {
-        "icon": "inbox",
-        "type": "web",
-        "url": "https://www.getrequest.de"
-      }
-    ]
-  }
+    {
+      "icon": "add",
+      "type": "web",
+      "url": "https://www.weimar.de"
+    },
+    {
+      "icon": "inbox",
+      "type": "web",
+      "url": "https://www.getrequest.de"
+    }
+  ]
+}
