@@ -13,6 +13,8 @@ class Config {
     });
 
     this.data = config.data;
+    this._processStyleUrl();
+
     return config.data;
   }
 
@@ -22,6 +24,20 @@ class Config {
 
   getData () {
     return this.data;
+  }
+
+  _processStyleUrl () {
+    if (this.data.hasOwnProperty('externalStyle') && typeof this.data.externalStyle === 'string' && this.data.externalStyle.length > 0) {
+      const configUrl = this._qualifyUrl(this.configUrl);
+      const styleUrl = new URL(this.data.externalStyle, configUrl); 
+      this.data.externalStyle = styleUrl.toString();
+    }
+  }
+
+  _qualifyUrl (url) {
+    const a = document.createElement('a');
+    a.href = url;
+    return a.href;
   }
 }
 

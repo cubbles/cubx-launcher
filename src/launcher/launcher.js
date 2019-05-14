@@ -126,18 +126,6 @@ class Launcher {
     parent.innerHTML = '';
   }
 
-  // getExternalStyleUrl (url) {
-  //   if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string' && url) {
-  //     let pathname = url.pathname.split('/');
-  //     pathname.pop();
-  //     pathname.push(this.config.externalStyle);
-  //     url.pathname = pathname.join('/');
-
-  //     return url.toString();
-  //   } else {
-  //     return undefined;
-  //   }
-  // }
   getExternalStyleUrl () {
     if (this.config.hasOwnProperty('externalStyle') && typeof this.config.externalStyle === 'string') {
       return this.config.externalStyle;

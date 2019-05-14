@@ -12,11 +12,6 @@ config
     const defaultStyleLoader = new StyleLoader(launcher.getDefaultStyleUrl(config.getLauncherSrc()));
     defaultStyleLoader.process();
 
-    // if (config.data.externalStyle) {
-    //   const externalStyleLoader = new StyleLoader(launcher.getExternalStyleUrl(config.getLauncherSrc()));
-    //   externalStyleLoader.process();
-    // }
-
     if (launcher.getExternalStyleUrl()) {
       const externalStyleLoader = new StyleLoader(launcher.getExternalStyleUrl());
       externalStyleLoader.process();
