@@ -20,5 +20,8 @@
     "afterEach": true,
     "expect": true,
     "sinon": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8
   }
 }

@@ -1,0 +1,132 @@
+/*
+    Write your style definitions here.
+    By default, webpack expects to find SugarSS ("Indent-based CSS syntax for PostCSS.")
+    @see https://github.com/postcss/sugarss
+*/
+@font-face 
+  font-family: 'Material Icons'
+  font-style: normal
+  font-weight: 400
+  src: url('material-design-icons/iconfont/MaterialIcons-Regular.eot') /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
+    url('material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff'),
+    url('material-design-icons/iconfont/MaterialIcons-Regular.ttf') format('truetype')
+    
+.material-icons
+  font-family: 'Material Icons'
+  font-weight: normal
+  font-style: normal
+  font-size: 24px  /* Preferred icon size */
+  display: inline-block
+  line-height: 1
+  text-transform: none
+  letter-spacing: normal
+  word-wrap: normal
+  white-space: nowrap
+  direction: ltr
+  -webkit-font-smoothing: antialiased
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale
+  /* Support for IE. */
+  font-feature-settings: 'liga'
+
+.cubx-launcher-root
+  position: fixed
+  right: 0
+  top: 50%
+  background-color: green
+  width: 70px
+  height: 70px
+  border-radius: 100% 0 0 100% 
+  z-index: 10000
+  transform: translateY(-50%)
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+  cursor: pointer
+
+.cubx-launcher-root > i
+  color: white
+  font-size: 50px
+  /* font-weight: bold */
+  
+.cubx-launcher-menu
+  position: fixed
+  right: 0
+
+.cubx-launcher-content-container
+  position: fixed
+  width: 100%
+  height: 100%
+  background-color: rgba(85, 102, 104, 0.42)
+
+.cubx-launcher-menu
+  position: fixed
+  right: 70px  
+  top: 50%
+  transform: translateY(-50%)
+  z-index: 10000
+
+.cubx-launcher-menu > ul
+  margin: 10px
+  padding: 0
+
+.cubx-launcher-app-icon
+  list-style-type: none
+  width: 50px
+  height: 50px
+  border-radius: 50%
+  background: green
+  color: white
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+  cursor: pointer
+  margin: 10px
+
+.cubx-launcher-app-icon > i
+  font-size: 30px
+
+.cubx-launcher-modal
+  position: fixed
+  z-index: 10000
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(0, 0, 0, 0.3)
+  display: flex
+  justify-content: center
+  flex-direction: column
+  align-items: center
+
+.cubx-launcher-modal-content
+  width: 80%
+  /* border: 1px solid white */
+  height: 80%
+  display: flex
+  flex-direction: column
+
+.cubx-launcher-modal-content [data-content-anchor]
+  flex: 1
+
+.cubx-launcher-modal-close
+  color: white
+  font-size: 60px
+  cursor: pointer
+
+.cubx-launcher-modal-close i
+  float: right
+
+.material-icons_hidden
+  display: none
+.launcher-modal_hidden
+  display: none
+.launcher-menu_hidden
+  display: none
